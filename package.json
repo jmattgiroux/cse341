@@ -1,0 +1,19 @@
+{
+  "name": "cse341",
+  "version": "1.0.0",
+  "description": "Project for CSE 341",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmattgiroux/cse341.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmattgiroux/cse341/issues"
+  },
+  "homepage": "https://github.com/jmattgiroux/cse341#readme"
+}
