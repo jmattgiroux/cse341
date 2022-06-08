@@ -4,10 +4,7 @@
 const app = require("express")();
 const PORT = process.env.PORT || 3000;
 
-app.get("", (req, res) => {
-    res.send("Jared Giroux");
-
-});
+app.use("", require("./routes"));
 
 app.listen(PORT, () => {
     console.log(`Page running on port ${PORT}`);
