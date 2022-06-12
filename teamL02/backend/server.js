@@ -4,7 +4,6 @@
  */
 
 const bodyParser = require("body-parser");
-const MongoClient = require("mongodb").MongoClient;
 const mongoDatabase = require("./database/connect");
 const professionalRoutes = require("./routes/professional");
 
