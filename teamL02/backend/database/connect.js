@@ -4,9 +4,11 @@
  * File uses insights and code from
  * https://github.com/byui-cse/cse341-code-student/blob/L02-team-solution-stretch/backend/db/connect.js
  */
-const { MongoClient } = require("mongodb").MongoClient;
+const MongoClient = require("mongodb").MongoClient;
 const dotenv = require("dotenv");
 dotenv.config();
+const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.rzqr5td.mongodb.net/?retryWrites=true&w=majority`;
+
 
 let database;
 

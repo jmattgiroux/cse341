@@ -1,40 +1,32 @@
-// Heroku Test Deployment
-// Resource used: https://www.freecodecamp.org/news/how-to-deploy-an-application-to-heroku/
+/*
+ * File uses code and insights from
+ * https://github.com/byui-cse/cse341-code-student/blob/L02-team-solution-stretch/backend/controllers/professional.js
+ */
+
+const bodyParser = require("body-parser");
+const MongoClient = require("mongodb").MongoClient;
+const mongodb = require("./database/connect");
+const professionalRoutes = require("./routes/professional");
 
 const app = require("express")();
 const PORT = process.env.PORT || 8080;
 
-app.use("/", require("./routes"));
+app.use(bodyParser.json());
 
-app.listen(PORT, () => {
-    console.log(`App listening on port ${PORT}`);
-
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
 });
 
-// Instructor's solution below:
+app.use("/professional", professionalRoutes);
 
-// const express = require('express');
-// const bodyParser = require('body-parser');
-// const MongoClient = require('mongodb').MongoClient;
-// const mongodb = require('./db/connect');
-// const professionalRoutes = require('./routes/professional');
+app.listen(8080);
 
-// const port = process.env.PORT || 8080;
-// const app = express();
-
-// app
-//   .use(bodyParser.json())
-//   .use((req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     next();
-//   })
-//   .use('/professional', professionalRoutes);
-
-// mongodb.initDb((err, mongodb) => {
+// mongodb.initDatabase((err, mongodb) => {
 //   if (err) {
 //     console.log(err);
 //   } else {
-//     app.listen(port);
-//     console.log(`Connected to DB and listening on ${port}`);
+//     app.listen(PORT);
+//     console.log(`Connected to DB and listening on ${PORT}`);
 //   }
 // });
