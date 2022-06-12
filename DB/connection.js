@@ -1,33 +1,34 @@
 /**
  * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
  * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
+ * File uses insights and code from 
+ * https://github.com/byui-cse/cse341-code-student/blob/L02-personal-solution/db/connect.js
+ * especially line 14 onwards.
  */
 const { MongoClient } = require("mongodb");
 const dotenv = require("dotenv");
+dotenv.config();
+const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.rzqr5td.mongodb.net/?retryWrites=true&w=majority`;
 
-async function main() {
-  const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.rzqr5td.mongodb.net/?retryWrites=true&w=majority`;
+let dataBase;
 
-  const client = new MongoClient(uri);
+export function initDataBase() {
 
-  try {
-    // Connect to the MongoDB cluster
-    await client.connect();
-
-    // Make the appropriate DB calls
-    await listDatabases(client);
-  } catch (e) {
-    console.error(e);
-  } finally {
-    await client.close();
+  // if it already exists, you don't need to re-initialize the dataBase.
+  if (dataBase){
+    console.log("DataBase is already initialized!!!");
+    return callback(null, dataBase);
   }
-}
 
-main().catch(console.error);
-
-async function listDatabases(client) {
-  databasesList = await client.db().admin().listDatabases();
-
-  console.log("Databases:");
-  databasesList.databases.forEach((db) => console.log(` - ${db.name}`));
-}
+  MongoClient.connect(uri)
+  .then((client) => {
+    dataBase = client;
+    callback(null, dataBase);
+  })
+  .catch((error) => {
+    if(!dataBase){
+      throw Error("Database not initialized!!!");
+    }
+    return dataBase;
+  });
+};
