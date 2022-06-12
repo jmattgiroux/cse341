@@ -5,7 +5,6 @@
 
 const bodyParser = require("body-parser");
 const mongoDatabase = require("./database/connect");
-const MongoClient = require("mongodb").MongoClient;
 
 const app = require("express")();
 const PORT = process.env.PORT || 8080;

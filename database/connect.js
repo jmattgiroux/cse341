@@ -6,11 +6,10 @@
  * https://github.com/byui-cse/cse341-code-student/blob/L02-personal-solution/db/connect.js
  * especially line 14 onwards.
  */
-const { MongoClient } = require("mongodb");
+const MongoClient = require("mongodb").MongoClient;
 const dotenv = require("dotenv");
 dotenv.config();
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.rzqr5td.mongodb.net/?retryWrites=true&w=majority`;
-// const uri = `mongodb://db1.example.net,db2.example.com/?replicaSet=test`;
 
 let database;
 
