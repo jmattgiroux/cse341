@@ -15,7 +15,7 @@ let database;
 
 // we're making the functions const so that they don't mutate.
 // https://stackoverflow.com/questions/33040703/proper-use-of-const-for-defining-functions
-export const initDatabase = (callback) => {
+const initDatabase = (callback) => {
   // if it already exists, you don't need to re-initialize the database.
   if (database) {
     console.log("Database is already initialized!!!");
@@ -36,9 +36,15 @@ export const initDatabase = (callback) => {
 };
 
 // function below should work since database was declared around line 14 and initialized in initDatabase.
-export const getDatabase = () => {
+const getDatabase = () => {
   if (!database) {
     throw Error("Database not initialized!!!");
   }
   return database;
+};
+
+
+module.exports = {
+  initDatabase,
+  getDatabase,
 };

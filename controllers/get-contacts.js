@@ -2,14 +2,14 @@
 // This file uses code and insights from:
 // https://github.com/byui-cse/cse341-code-student/blob/L02-personal-solution/controllers/contacts.js
 
-const mongoDatabase = require("../db/connect");
-const ObjectId = require("mongoDatabase").ObjectId;
+const mongoDatabase = require("../database/connect");
+const ObjectId = require("mongodb").ObjectId;
 
 // const getAllContacts =  async (req, res, next) => {
 //^original version; why do they have those params if they won't be used?
 // TODO: make getAllContacts function comply with functional programming (i.e. database in, results out)
 // may be difficult since the res parameter from the instructor's solution implies we're updating whatever res is passed to this function.
-export const getAllContacts = async (database) => {
+const getAllContacts = async (database) => {
   const result = await database
     .getDatabase()
     .db()
@@ -25,7 +25,7 @@ export const getAllContacts = async (database) => {
   return result;
 };
 
-export const getSingleContact = async (database, request) => {
+const getSingleContact = async (database, request) => {
   const userId = new ObjectId(request.params.id);
   const result = await database
     .getDatabase()
@@ -40,4 +40,10 @@ export const getSingleContact = async (database, request) => {
   //   });
 
   return result;
+};
+
+
+module.exports = {
+  getAllContacts,
+  getSingleContact,
 };
