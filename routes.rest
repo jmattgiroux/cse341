@@ -7,3 +7,13 @@ GET http://localhost:8080/contacts/62a56e6fdffc7b057c056976
 GET http://localhost:8080/contacts/62a56e8edffc7b057c05ac12
 ### //get Hal Jordan
 GET http://localhost:8080/contacts/62a56eaddffc7b057c05eecc
+// Production
+### //get all
+GET https://jmg-02-personal.herokuapp.com/contacts
+### //get Bruce Wayne
+GET https://jmg-02-personal.herokuapp.com/contacts/62a56e6fdffc7b057c056976
+### //get Clark Kent
+GET https://jmg-02-personal.herokuapp.com/contacts/62a56e8edffc7b057c05ac12
+### //get Hal Jordan
+GET https://jmg-02-personal.herokuapp.com/contacts/62a56eaddffc7b057c05eecc
+###
