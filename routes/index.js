@@ -7,6 +7,8 @@ const router = require('express').Router();
 
 // .use() documentation: https://www.geeksforgeeks.org/express-js-router-use-function/
 // router.use( path, function )
+
+// from what I understand, if there's a request to the server for /contacts, then the stuff from contacts.js file will handle the request. For example, if the request is just .../contacts, then the getAllContacts function will be called in contacts.js. It seems we're making an API for our server.
 router.use("/contacts", require("./contacts"));
 
 module.exports = router;
