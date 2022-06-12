@@ -13,7 +13,7 @@ const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}
 
 let database;
 
-// we're making the function const so that it doesn't mutate.
+// we're making the functions const so that they don't mutate.
 // https://stackoverflow.com/questions/33040703/proper-use-of-const-for-defining-functions
 export const initDatabase = (callback) => {
   // if it already exists, you don't need to re-initialize the database.
@@ -22,7 +22,7 @@ export const initDatabase = (callback) => {
     return callback(null, database);
   }
 
-  // Examples: https://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html 
+  // Examples: https://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html
   MongoClient.connect(uri)
     .then((client) => {
       database = client;
@@ -33,8 +33,12 @@ export const initDatabase = (callback) => {
         callback(error);
       }
     });
-  };
-  
-export const getDatabase = () =>{};
+};
 
-  // throw Error("Database not initialized!!!");
+// function below should work since database was declared around line 14 and initialized in initDatabase.
+export const getDatabase = () => {
+  if (!database) {
+    throw Error("Database not initialized!!!");
+  }
+  return database;
+};
