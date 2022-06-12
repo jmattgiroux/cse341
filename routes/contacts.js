@@ -10,8 +10,8 @@ const contactsController = require("../controllers/get-contacts");
 // router.get() documentation: https://expressjs.com/en/guide/routing.html
 
 // Moved toArray part of instructor code in contacts-controller over to here; will need to add the rest of the code from contacts-controller over to whatever makes the requests to the routers here.
-router.get("/", contactsController.getAllContacts).toArray();
+router.get("/", contactsController.getAllContacts);
 
-router.get("/:id", contactsController.getSingleContact).toArray();
+router.get("/:id", contactsController.getSingleContact);
 
 module.exports = router;
