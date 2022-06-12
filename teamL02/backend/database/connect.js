@@ -37,23 +37,6 @@ const getDatabase = () => {
   return database;
 };
 
-async function main() {
-  const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.rzqr5td.mongodb.net/?retryWrites=true&w=majority`;
-
-  const client = new MongoClient(uri);
-
-  try {
-    // Connect to the MongoDB cluster
-    await client.connect();
-
-    // Make the appropriate DB calls
-    await listDatabases(client);
-  } catch (e) {
-    console.error(e);
-  } finally {
-    await client.close();
-  }
-}
 
 module.exports = {
   initDatabase,
