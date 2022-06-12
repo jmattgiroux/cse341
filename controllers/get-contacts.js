@@ -2,18 +2,19 @@
 // This file uses code and insights from:
 // https://github.com/byui-cse/cse341-code-student/blob/L02-personal-solution/controllers/contacts.js
 
-const mongoDatabase = require("../database/connect");
+const database = require("../database/connect");
 const ObjectId = require("mongodb").ObjectId;
 
 // const getAllContacts =  async (req, res, next) => {
-  //^original version; why do they have those params if they won't be used?
-  // TODO: make getAllContacts function comply with functional programming (i.e. database in, results out)
-  // may be difficult since the res parameter from the instructor's solution implies we're updating whatever res is passed to this function.
-  // const getAllContacts = async (database) => { // new
-  const getAllContacts =  async (req, res, next) => { // old
+//^original version; why do they have those params if they won't be used?
+// TODO: make getAllContacts function comply with functional programming (i.e. database in, results out)
+// may be difficult since the res parameter from the instructor's solution implies we're updating whatever res is passed to this function.
+// const getAllContacts = async (database) => { // new
+const getAllContacts = async (req, res, next) => {
+  // old
   const result = await database
     .getDatabase()
-    .db()
+    .db("cse341")
     .collection("contacts")
     .find();
 
@@ -26,13 +27,13 @@ const ObjectId = require("mongodb").ObjectId;
   // return result;
 };
 
-
 // const getSingleContact = async (database, request) => { //new
-const getSingleContact =  async (req, res, next) => { // old
-  const userId = new ObjectId(request.params.id);
+const getSingleContact = async (req, res, next) => {
+  // old
+  const userId = new ObjectId(req.params.id);
   const result = await database
     .getDatabase()
-    .db()
+    .db("cse341")
     .collection("contacts")
     .find({ _id: userId });
 

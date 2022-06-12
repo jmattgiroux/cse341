@@ -1,3 +1,9 @@
 // LOCALHOST 
-### 
+### //get all
 GET http://localhost:8080/contacts 
+### //get Bruce Wayne
+GET http://localhost:8080/contacts/62a56e6fdffc7b057c056976
+### //get Clark Kent
+GET http://localhost:8080/contacts/62a56e8edffc7b057c05ac12
+### //get Hal Jordan
+GET http://localhost:8080/contacts/62a56eaddffc7b057c05eecc
