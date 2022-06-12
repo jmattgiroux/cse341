@@ -22,7 +22,7 @@ app.use("/professional", professionalRoutes);
 
 // app.listen(8080);
 
-mongoDatabase.initDatabase((err, mongodb) => {
+mongoDatabase.initDatabase((err, mongoDatabase) => {
   if (err) {
     console.log(err);
   } else {
