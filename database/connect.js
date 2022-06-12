@@ -10,6 +10,7 @@ const { MongoClient } = require("mongodb");
 const dotenv = require("dotenv");
 dotenv.config();
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.rzqr5td.mongodb.net/?retryWrites=true&w=majority`;
+// const uri = `mongodb://db1.example.net,db2.example.com/?replicaSet=test`;
 
 let database;
 
