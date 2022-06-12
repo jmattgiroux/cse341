@@ -5,7 +5,7 @@
 
 const bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
-const mongodb = require("./database/connect");
+const mongoDatabase = require("./database/connect");
 const professionalRoutes = require("./routes/professional");
 
 const app = require("express")();
@@ -22,7 +22,7 @@ app.use("/professional", professionalRoutes);
 
 // app.listen(8080);
 
-mongodb.initDatabase((err, mongodb) => {
+mongoDatabase.initDatabase((err, mongodb) => {
   if (err) {
     console.log(err);
   } else {
