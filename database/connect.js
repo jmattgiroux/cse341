@@ -30,9 +30,7 @@ const initDatabase = (callback) => {
       callback(null, database);
     })
     .catch((error) => {
-      if (!database) {
         callback(error);
-      }
     });
 };
 
