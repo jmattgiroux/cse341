@@ -5,7 +5,7 @@
 
 const router = require("express").Router();
 
-const contactsController = require("../controllers/get-contacts");
+const contactsController = require("../controllers/contacts");
 
 // router.get() documentation: https://expressjs.com/en/guide/routing.html
 
@@ -13,5 +13,9 @@ const contactsController = require("../controllers/get-contacts");
 router.get("/", contactsController.getAllContacts);
 
 router.get("/:id", contactsController.getSingleContact);
+
+router.post("/", contactsController.insertSingleContact);
+
+router.put("/:id", contactsController.updateSingleContact);
 
 module.exports = router;

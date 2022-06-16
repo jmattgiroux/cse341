@@ -1,12 +1,52 @@
 // LOCALHOST 
-### //get all
+### get all
 GET http://localhost:8080/contacts 
-### //get Bruce Wayne
+### get Bruce Wayne
 GET http://localhost:8080/contacts/62a56e6fdffc7b057c056976
-### //get Clark Kent
+### get Clark Kent
 GET http://localhost:8080/contacts/62a56e8edffc7b057c05ac12
-### //get Hal Jordan
+### get Hal Jordan
 GET http://localhost:8080/contacts/62a56eaddffc7b057c05eecc
+
+### Insert new contact
+POST http://localhost:8080/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "TestFirstName1",
+    "lastName": "TestLastName1",
+    "email": "TestEmail1@gmail.com",
+    "favoriteColor": "TestColor1",
+    "birthday": "01/01/1111"
+}
+
+### Update Bruce Wayne's contact to Terry McGinnis
+PUT http://localhost:8080/contacts/62a56e6fdffc7b057c056976 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Terry",
+    "lastName": "McGinnis",
+    "email": "batman@beyond.net",
+    "favoriteColor": "Blue",
+    "birthday": "08/18/2023"
+}
+
+### Update Bruce Wayne's contact back to Bruce Wayne
+PUT http://localhost:8080/contacts/62a56e6fdffc7b057c056976 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Bruce",
+    "lastName": "Wayne",
+    "email": "notBatman@wayne.industries",
+    "favoriteColor": "Black",
+    "birthday": "04/17/1969"
+}
+
+
+
+
 // Production
 ### //get all
 GET https://jmg-02-personal.herokuapp.com/contacts
