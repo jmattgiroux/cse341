@@ -74,7 +74,7 @@ Content-Type: application/json
 }
 
 ### Delete contact
-DELETE https://jmg-03-personal.herokuapp.com/contacts/62aac2b1994138b80053b195
+DELETE https://jmg-03-personal.herokuapp.com/contacts/62ab417c916e36355b3f89cb
 
 ### Update Bruce Wayne's contact to Terry McGinnis
 PUT https://jmg-03-personal.herokuapp.com/contacts/62a56e6fdffc7b057c056976 HTTP/1.1
@@ -88,7 +88,7 @@ Content-Type: application/json
     "birthday": "08/18/2023"
 }
 
-### Update Bruce Wayne's contact back to Bruce Wayne
+### Update Bruce Wayne's contact back to Bruce Wayne.
 PUT https://jmg-03-personal.herokuapp.com/contacts/62a56e6fdffc7b057c056976 HTTP/1.1
 Content-Type: application/json
 
