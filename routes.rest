@@ -74,7 +74,7 @@ Content-Type: application/json
 }
 
 ### Delete contact
-DELETE https://jmg-03-personal.herokuapp.com/contacts/62ab417c916e36355b3f89cb
+DELETE https://jmg-03-personal.herokuapp.com/contacts/62ab42cb916e36355b3f89cc
 
 ### Update Bruce Wayne's contact to Terry McGinnis
 PUT https://jmg-03-personal.herokuapp.com/contacts/62a56e6fdffc7b057c056976 HTTP/1.1
