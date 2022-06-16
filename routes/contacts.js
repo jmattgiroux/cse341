@@ -18,4 +18,6 @@ router.post("/", contactsController.insertSingleContact);
 
 router.put("/:id", contactsController.updateSingleContact);
 
+router.delete("/:id", contactsController.deleteSingleContact);
+
 module.exports = router;

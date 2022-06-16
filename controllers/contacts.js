@@ -56,6 +56,8 @@ const insertSingleContact = async (req, res, next) => {
   }
 };
 
+// referenced code from here: https://github.com/byui-cse/cse341-code-student/blob/L03-personal-solution/controllers/contacts.js
+// Resource referenced: https://www.mongodb.com/docs/manual/reference/method/db.collection.updateOne/
 const updateSingleContact = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
   const contact = {
@@ -70,14 +72,20 @@ const updateSingleContact = async (req, res, next) => {
     .getDatabase()
     .db("cse341")
     .collection("contacts")
-    .updateOne({
-      _id: userId,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      favoriteColor: req.body.favoriteColor,
-      birthday: req.body.birthday,
-    });
+    .updateOne(
+      {
+        _id: userId,
+      },
+      {
+        $set: {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          favoriteColor: req.body.favoriteColor,
+          birthday: req.body.birthday,
+        },
+      }
+    );
 
   if (result.acknowledged) {
     res.status(201).json(result);
@@ -86,9 +94,33 @@ const updateSingleContact = async (req, res, next) => {
   }
 };
 
+const deleteSingleContact = async (req, res, next) => {
+  const userId = new ObjectId(req.params.id);
+  const contact = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday,
+  };
+
+  const result = await database
+    .getDatabase()
+    .db("cse341")
+    .collection("contacts")
+    .deleteOne({ _id: userId });
+
+  if (result.acknowledged) {
+    res.status(201).json(result);
+  } else {
+    res.status(500).json(result.error || "Failed to delete contact");
+  }
+};
+
 module.exports = {
   getAllContacts,
   getSingleContact,
   insertSingleContact,
   updateSingleContact,
+  deleteSingleContact,
 };
