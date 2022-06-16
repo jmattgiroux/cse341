@@ -52,7 +52,9 @@ const addSingleContact = async (req, res, next) => {
   if (result.acknowledged) {
     res.status(201).json(result);
   } else {
-    res.status(500).json(result.error || "Error occurred during contact creation");
+    res
+      .status(500)
+      .json(result.error || "Error occurred during contact creation");
   }
 };
 
@@ -90,7 +92,9 @@ const updateSingleContact = async (req, res, next) => {
   if (result.modifiedCount > 0) {
     res.status(204).send();
   } else {
-    res.status(500).json(result.error || "Error occurred during contact update");
+    res
+      .status(500)
+      .json(result.error || "Error occurred during contact update");
   }
 };
 
@@ -106,9 +110,14 @@ const deleteSingleContact = async (req, res, next) => {
   if (result.deletedCount > 0) {
     res.status(204).send();
   } else {
-    res.status(500).json(result.error || "Error occurred during contact deletion");
+    res
+      .status(500)
+      .json(result.error || "Error occurred during contact deletion");
   }
 };
+
+// http status code reference: https://restfulapi.net/http-status-204-no-content/
+// another http status code reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 
 module.exports = {
   getAllContacts,
