@@ -5,7 +5,7 @@ const doc = {
     title: "Contacts API",
     description: "Contacts API",
   },
-  host: "localhost:8080",
+  host: "https://jmg-04-personal.herokuapp.com/",
   schemes: ["http"],
 };
 
