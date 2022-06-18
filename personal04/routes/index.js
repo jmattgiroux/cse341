@@ -13,15 +13,6 @@ const swaggerDocument = require("../swagger.json");
 
 // from what I understand, if there's a request to the server for /contacts, then the stuff from contacts.js file will handle the request. For example, if the request is just .../contacts, then the getAllContacts function will be called in contacts.js. It seems we're making an API for our server.
 router.use("/contacts", require("./contacts"));
-router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-router.use(
-  "/",
-  (docData = (req, res) => {
-    let docData = {
-      documentationURL: "https://jmg-04-personal.herokuapp.com/api-docs/",
-    };
-    res.send(docData);
-  })
-);
+router.use("/", require("./swagger"));
 
 module.exports = router;
