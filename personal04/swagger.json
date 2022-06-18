@@ -5,7 +5,7 @@
     "description": "Contacts API",
     "version": "1.0.0"
   },
-  "host": "https://jmg-04-personal.herokuapp.com",
+  "host": "jmg-04-personal.herokuapp.com",
   "basePath": "/",
   "schemes": [
     "http"
