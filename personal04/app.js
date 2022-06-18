@@ -14,28 +14,18 @@ const PORT = process.env.PORT || 8080;
 
 app
   .use(bodyParser.json())
-  .use(cors())
-  .use(express.json())
-  .use(express.urlencoded({ extended: true }))
-  // .use((req, res, next) => {
-  //   res.setHeader(
-  //     "Access-Control-Allow-Origin",
-  //     "*"
-  //     // "https://cse341-contacts-frontend.netlify.app/"
-  //   );
-  //   next();
-  // })
   // .use(cors())
   // .use(express.json())
   // .use(express.urlencoded({ extended: true }))
+  .use((req, res, next) => {
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "*"
+      // "https://cse341-contacts-frontend.netlify.app/"
+    );
+    next();
+  })
   .use("/", require("./routes"));
-
-// app
-//   .use(bodyParser.json())
-//   .use(cors())
-//   .use(express.json())
-//   .use(express.urlencoded({ extended: true }))
-//   .use("/", require("./routes"));
 
 mongoDatabase.initDatabase((error, mongoDatabase) => {
   if (error) {
