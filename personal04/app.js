@@ -19,12 +19,6 @@ app
       "Access-Control-Allow-Origin",
       "https://cse341-contacts-frontend.netlify.app/"
     );
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept, Z-Key"
-    );
-    res.setHeader('Content-Type', 'application.json');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     next();
   })
   // .use(cors())
@@ -32,12 +26,12 @@ app
   // .use(express.urlencoded({ extended: true }))
   .use("/", require("./routes"));
 
-  app
-  .use(bodyParser.json())
-  .use(cors())
-  .use(express.json())
-  .use(express.urlencoded({ extended: true }))
-  .use("/", require("./routes"));
+// app
+//   .use(bodyParser.json())
+//   .use(cors())
+//   .use(express.json())
+//   .use(express.urlencoded({ extended: true }))
+//   .use("/", require("./routes"));
 
 mongoDatabase.initDatabase((error, mongoDatabase) => {
   if (error) {
