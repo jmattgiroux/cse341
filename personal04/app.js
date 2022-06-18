@@ -17,14 +17,14 @@ app
   .use(cors())
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
-  .use((req, res, next) => {
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      "*"
-      // "https://cse341-contacts-frontend.netlify.app/"
-    );
-    next();
-  })
+  // .use((req, res, next) => {
+  //   res.setHeader(
+  //     "Access-Control-Allow-Origin",
+  //     "*"
+  //     // "https://cse341-contacts-frontend.netlify.app/"
+  //   );
+  //   next();
+  // })
   // .use(cors())
   // .use(express.json())
   // .use(express.urlencoded({ extended: true }))
