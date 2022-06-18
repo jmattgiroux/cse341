@@ -1,33 +1,31 @@
 // app.js for personal 04 assignment
-const express = require('express');
-const cors = require('cors');
-const app = express();
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger-output.json');
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// most of code below was imported from Team L04 Assignment from CSE 341 Course
+// https://www.npmjs.com/package/cors
+const cors = require("cors");
+// https://www.npmjs.com/package/express
+const express = require("express");
+const app = express();
+// https://www.npmjs.com/package/swagger-ui-express
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
+const mongoDatabase = require("./database/connect");
+
+const PORT = process.env.PORT || 8080;
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app
   .use(cors())
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
-  .use('/', require('./routes'));
+  .use("/", require("./routes"));
 
-const db = require('./models');
-db.mongoose
-  .connect(db.url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log('Connected to the database!');
-  })
-  .catch((err) => {
-    console.log('Cannot connect to the database!', err);
-    process.exit();
-  });
-
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+mongoDatabase.initDatabase((error, mongoDatabase) => {
+  if (error) {
+    console.log(error);
+  } else {
+    app.listen(PORT);
+    console.log(`Connected to database and listening on ${PORT}`);
+  }
 });
