@@ -6,14 +6,10 @@ const cors = require("cors");
 // https://www.npmjs.com/package/express
 const express = require("express");
 const app = express();
-// https://www.npmjs.com/package/swagger-ui-express
-const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("./swagger.json");
+
 const mongoDatabase = require("./database/connect");
 
 const PORT = process.env.PORT || 8080;
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app
   .use(cors())
