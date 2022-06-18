@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 
 ### Delete contact
-DELETE http://localhost:8080/contacts/62aac2b1994138b80053b195
+DELETE http://localhost:8080/contacts/62ae2b288dba942a6db8e85f
 
 ### Update Bruce Wayne's contact to Terry McGinnis
 PUT http://localhost:8080/contacts/62a56e6fdffc7b057c056976 HTTP/1.1

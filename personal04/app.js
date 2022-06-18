@@ -1,26 +1,33 @@
-// Heroku Test Deployment
-// Resource used: https://www.freecodecamp.org/news/how-to-deploy-an-application-to-heroku/
-// This file uses code and insights from:
-// https://github.com/byui-cse/cse341-code-student/blob/L02-personal-solution/app.js
+// app.js for personal 04 assignment
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
 
-const bodyParser = require("body-parser");
-const mongoDatabase = require("./database/connect");
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-const app = require("express")();
+app
+  .use(cors())
+  .use(express.json())
+  .use(express.urlencoded({ extended: true }))
+  .use('/', require('./routes'));
+
+const db = require('./models');
+db.mongoose
+  .connect(db.url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log('Connected to the database!');
+  })
+  .catch((err) => {
+    console.log('Cannot connect to the database!', err);
+    process.exit();
+  });
+
 const PORT = process.env.PORT || 8080;
-
-app.use(bodyParser.json());
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  next();
-});
-app.use("/", require("./routes"));
-
-mongoDatabase.initDatabase((error, mongoDatabase) => {
-  if (error) {
-    console.log(error);
-  } else {
-    app.listen(PORT);
-    console.log(`Connected to database and listening on ${PORT}`);
-  }
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });
