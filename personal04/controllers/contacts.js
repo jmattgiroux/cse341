@@ -2,7 +2,7 @@
 // This file uses code and insights from:
 // https://github.com/byui-cse/cse341-code-student/blob/L02-personal-solution/controllers/contacts.js
 
-const database = require("../database/connect");
+const database = require("../personal04/routes/database/connect");
 const ObjectId = require("mongodb").ObjectId;
 
 const getAllContacts = async (req, res, next) => {

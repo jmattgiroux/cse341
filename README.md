@@ -1,3 +1,3 @@
 # cse341
 
-This is a web-page deployed with Heroku.
+This repo is for Web Backend 2 | CSE 341 assignments.
