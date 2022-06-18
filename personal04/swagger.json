@@ -8,7 +8,7 @@
   "host": "jmg-04-personal.herokuapp.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/contacts/": {
