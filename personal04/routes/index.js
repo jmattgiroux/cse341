@@ -4,12 +4,9 @@
 // https://github.com/byui-cse/cse341-code-student/blob/L02-personal-solution/routes/index.js
 
 const router = require("express").Router();
-const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("../swagger.json");
 
 router.use("/contacts", require("./contacts"));
-// router.use("/", require("./swagger"));
-router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+router.use("/api-docs", require("./swagger"));
 router.use(
   "/",
   (docData = (req, res) => {
