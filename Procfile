@@ -1,1 +1,1 @@
-web: node ./personal04/app.js
+web: node ./app.js
