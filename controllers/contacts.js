@@ -87,20 +87,7 @@ const updateSingleContact = async (req, res, next) => {
       .getDatabase()
       .db("cse341")
       .collection("contacts")
-      .updateOne(
-        {
-          _id: userId,
-        },
-        {
-          $set: {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            favoriteColor: req.body.favoriteColor,
-            birthday: req.body.birthday,
-          },
-        }
-      );
+      .replaceOne({ _id: userId }, contact);
 
     if (result.modifiedCount > 0) {
       res.status(204).send();
