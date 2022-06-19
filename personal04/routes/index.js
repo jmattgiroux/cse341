@@ -6,15 +6,6 @@
 const router = require("express").Router();
 
 router.use("/contacts", require("./contacts"));
-router.use("/api-docs", require("./swagger"));
-router.use(
-  "/",
-  (docData = (req, res) => {
-    let docData = {
-      documentationURL: "https://jmg-04-personal.herokuapp.com/api-docs/",
-    };
-    res.send(docData);
-  })
-);
+router.use("/", require("./swagger"));
 
 module.exports = router;
