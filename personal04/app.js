@@ -13,7 +13,7 @@ const mongoDatabase = require("./database/connect");
 const PORT = process.env.PORT || 8080;
 
 app
-  // .use(bodyParser.json())
+  .use(bodyParser.json())
   .use((req, res, next) => {
     res.setHeader(
       "Access-Control-Allow-Origin",
