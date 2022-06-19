@@ -74,53 +74,66 @@ const addSingleContact = async (req, res, next) => {
 // Resource referenced: https://www.mongodb.com/docs/manual/reference/method/db.collection.updateOne/
 const updateSingleContact = async (req, res, next) => {
   try {
-    const userId = new ObjectId(req.params.id);
-    const contact = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      favoriteColor: req.body.favoriteColor,
-      birthday: req.body.birthday,
-    };
+  const userId = new ObjectId(req.params.id);
+  const contact = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday,
+  };
 
-    const result = await database
-      .getDatabase()
-      .db("cse341")
-      .collection("contacts")
-      .replaceOne({ _id: userId }, contact);
+  const result = await database
+    .getDatabase()
+    .db("cse341")
+    .collection("contacts")
+    .updateOne(
+      {
+        _id: userId,
+      },
+      {
+        $set: {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          favoriteColor: req.body.favoriteColor,
+          birthday: req.body.birthday,
+        },
+      }
+    );
 
-    if (result.modifiedCount > 0) {
-      res.status(204).send();
-    } else {
-      res
-        .status(500)
-        .json(result.error || "Error occurred during contact update");
-    }
-  } catch {
-    res.status(500).json({ message: err.message });
+  if (result.modifiedCount > 0) {
+    res.status(204).send();
+  } else {
+    res
+      .status(500)
+      .json(result.error || "Error occurred during contact update");
   }
+} catch {
+  res.status(500).json({ message: err.message });
+}
 };
 
 const deleteSingleContact = async (req, res, next) => {
   try {
-    const userId = new ObjectId(req.params.id);
+  const userId = new ObjectId(req.params.id);
 
-    const result = await database
-      .getDatabase()
-      .db("cse341")
-      .collection("contacts")
-      .deleteOne({ _id: userId });
+  const result = await database
+    .getDatabase()
+    .db("cse341")
+    .collection("contacts")
+    .deleteOne({ _id: userId });
 
-    if (result.deletedCount > 0) {
-      res.status(204).send();
-    } else {
-      res
-        .status(500)
-        .json(result.error || "Error occurred during contact deletion");
-    }
-  } catch {
-    res.status(500).json({ message: err.message });
+  if (result.deletedCount > 0) {
+    res.status(204).send();
+  } else {
+    res
+      .status(500)
+      .json(result.error || "Error occurred during contact deletion");
   }
+} catch {
+  res.status(500).json({ message: err.message });
+}
 };
 
 // http status code reference: https://restfulapi.net/http-status-204-no-content/
