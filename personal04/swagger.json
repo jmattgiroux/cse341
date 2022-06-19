@@ -5,10 +5,10 @@
     "description": "Contacts API",
     "version": "1.0.0"
   },
-  "host": "jmg-04-personal.herokuapp.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/contacts/": {
@@ -145,7 +145,7 @@
         }
       }
     },
-    "/api-docs/": {
+    "/api-docs": {
       "get": {
         "description": "",
         "parameters": [],

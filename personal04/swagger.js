@@ -7,8 +7,9 @@ const doc = {
   },
 
   // host: "localhost:8080",
+  // schemes: ["http"]
   host: "jmg-04-personal.herokuapp.com",
-  schemes: ["https"],
+  schemes: ["https"]
 };
 
 const outputFile = "./swagger.json";
